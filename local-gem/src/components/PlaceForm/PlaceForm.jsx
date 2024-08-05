@@ -20,7 +20,6 @@ function PlaceForm() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data)
-      // Optionally, redirect or update state to show the new place
     })
     .catch((error) => {
       console.error('Error:', error)
