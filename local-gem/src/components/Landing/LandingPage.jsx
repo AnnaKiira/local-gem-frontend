@@ -7,6 +7,6 @@ const LandingPage = () => {
         </h3>
       </main>
     )
-  }
+}
   
-  export default LandingPage;
+export default LandingPage;
