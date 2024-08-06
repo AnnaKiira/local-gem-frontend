@@ -8,7 +8,7 @@ const SignupForm = (props) => {
   const [formData, setFormData] = useState({
     email: '',
     username: '',
-    password: '',
+    hashedPassword: '',
     passwordConf: '',
   });
 
@@ -31,10 +31,10 @@ const SignupForm = (props) => {
     }
   };
 
-  const {email, username, password, passwordConf} = formData
+  const {email, username, hashedPassword, passwordConf} = formData
 
   const isFormInvalid = () => {
-    return !(email, username && password && password === passwordConf)
+    return !(email && username && hashedPassword && hashedPassword === passwordConf)
   }
 
   return (
@@ -63,12 +63,12 @@ const SignupForm = (props) => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="hashedPassword">Password:</label>
           <input
-            type="password"
-            id="password"
-            value={password}
-            name="password"
+            type="hashedPassword"
+            id="hashedPassword"
+            value={hashedPassword}
+            name="hashedPassword"
             onChange={handleChange}
           />
         </div>
