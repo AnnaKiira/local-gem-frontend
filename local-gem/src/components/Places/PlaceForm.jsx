@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function PlaceForm() {
-  const [nameOfPlace, setNameOfPlace] = useState('')
-  const [location, setLocation] = useState('')
-  const [description, setDescription] = useState('')
+  const [nameOfPlace, setNameOfPlace] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const newPlace = { nameOfPlace, location, description }
+    const newPlace = { nameOfPlace, location, description };
 
     fetch('/places', {
       method: 'POST',
@@ -17,14 +19,15 @@ function PlaceForm() {
       },
       body: JSON.stringify(newPlace),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data)
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-    })
-  }
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        navigate('/places'); // Redirect to places list after successful submission
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -34,6 +37,7 @@ function PlaceForm() {
           type="text"
           value={nameOfPlace}
           onChange={(e) => setNameOfPlace(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -42,6 +46,7 @@ function PlaceForm() {
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -49,11 +54,12 @@ function PlaceForm() {
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
         ></textarea>
       </div>
       <button type="submit">Add Place</button>
     </form>
-  )
+  );
 }
 
-export default PlaceForm
+export default PlaceForm;
