@@ -9,6 +9,7 @@ import SigninForm from './components/SigninForm/SigninForm.jsx'
 import Landing from './components/Landing/LandingPage.jsx'
 import PlacesList from './components/Places/PlacesList.jsx'
 import Navbar from './components/navbar/navbar.jsx'
+import UserProfile from './components/UserProfile/UserProfile.jsx'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
@@ -51,6 +52,7 @@ function App() {
       <Routes>
       {user ? (
         <>
+        <Route path="/" element={<UserProfile user={user} />} />
         <Route path="/places" element={<PlacesList />} /> 
         </>
          ) : (

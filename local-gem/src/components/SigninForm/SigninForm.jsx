@@ -59,7 +59,7 @@ const SigninForm = (props) => {
         <div>
           <button>Log In</button>
           <Link to="/">
-            <button>Cancel Sign In</button>
+            <button>Go Back</button>
           </Link>
         </div>
             </form>
