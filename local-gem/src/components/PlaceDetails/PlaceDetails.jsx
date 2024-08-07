@@ -43,7 +43,6 @@ const PlaceDetails = ({ handleDeletePlace}) => {
 
 
  if (!place) return <main>Loading...</main>
-console.log(place)
 
  return (
    <main>
