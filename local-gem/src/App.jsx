@@ -5,8 +5,8 @@ import SignupForm from './components/SignupForm/SignupForm.jsx'
 import SigninForm from './components/SigninForm/SigninForm.jsx'
 import Landing from './components/Landing/LandingPage.jsx'
 import PlacesList from './components/Places/PlacesList.jsx'
-import PlaceForm from '../components/Places/PlaceForm.jsx'
-import Navbar from './components/navbar/navbar.jsx'
+import PlaceForm from './components/Places/PlaceForm.jsx'
+import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
 
 function App() {
