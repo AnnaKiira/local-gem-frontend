@@ -1,5 +1,5 @@
 //import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {Router, Routes, Route} from 'react-router-dom'
 import {useState} from 'react'
 //import PlacesList from './components/PlacesList.jsx'
 //import PlaceForm from './components/PlaceForm.jsx'
