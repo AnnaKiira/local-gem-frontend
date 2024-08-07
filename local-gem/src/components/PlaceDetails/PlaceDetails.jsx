@@ -43,12 +43,12 @@ const PlaceDetails = ({ handleDeletePlace}) => {
 
 
  if (!place) return <main>Loading...</main>
-
+console.log(place)
 
  return (
    <main>
      <header>
-       <h1>{place.name}</h1>
+       <h1>{place.placeName}</h1>
        <p>
          {place.user.username} posted on
          {new Date(place.createdAt).toLocaleDateString()}
