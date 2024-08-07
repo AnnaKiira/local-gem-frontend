@@ -1,69 +1,87 @@
-//import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import {Router, Routes, Route} from 'react-router-dom'
-import {useState} from 'react'
-//import PlacesList from './components/PlacesList.jsx'
-//import PlaceForm from './components/PlaceForm.jsx'
-import * as authService from '../src/services/authService.js'
+import { useState, useEffect, createContext } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import './App.css'
+
+import PlaceDetails from './components/PlaceDetails/PlaceDetails';
 import SignupForm from './components/SignupForm/SignupForm.jsx'
 import SigninForm from './components/SigninForm/SigninForm.jsx'
 import Landing from './components/Landing/LandingPage.jsx'
 import PlacesList from './components/Places/PlacesList.jsx'
-import Navbar from './components/navbar/navbar.jsx'
+import PlaceForm from './components/Places/PlaceForm.jsx'
+import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
 
-function App() {
-  const [user, setUser] = useState(authService.getUser())
+// Services
+import * as placeService from './services/placeService';
+import * as authService from '../src/services/authService.js'
+
+export const AuthedUserContext = createContext(null);
+
+const App = () => {
+  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [places, setPlaces] = useState([])
+
+  // Location variables
+  const navigate = useNavigate()
 
   const handleSignout = () => {
     authService.signout()
     setUser(null)
   }
 
+  const fetchAllPlaces = async () => {
+    const allPlaces = await placeService.index() // Make the API call, receive the data back from the backend server
+    setPlaces(allPlaces) // Set the data to state
+  }
 
+  useEffect(() => {
+    if (user) {
+      fetchAllPlaces()
+    }
+  }, [user])
 
+  const handleAddPlace = async (formData) => {
+    const newPlace = await placeService.create(formData)
+    setPlaces([newPlace, ...places])
+    navigate('/places')
+  }
+
+  const handleDeletePlace = async (placeId) => {
+    // Send the DELETE request via our service function
+    const deletePlace = await placeService.deletePlace(placeId)
+    console.log(deletePlace)
+    // Update state to reflect the up to date places list
+    await fetchAllPlaces()
+    // Navigate to place index
+    navigate('/places')
+  }
+
+  const handleUpdatePlace = async (placeId, formData) => {
+    const updatedPlace = await placeService.update(placeId, formData)
+    console.log(updatedPlace)
+    navigate(`/places/${placeId}`);
+  }
 
   return (
-    <>
-    {/* <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/places">Places</Link>
-            </li>
-            <li>
-              <Link to="/places/new">Add Place</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/" element={<h1>Home Page</h1>} />
-          <Route path="/places" element={<PlacesList />} />
-          <Route path="/places/new" element={<PlaceForm />} />
-        </Routes>
-      </div>
-    </Router> */}
-    <Router>
-    <Navbar user={user} handleSignout={handleSignout} />
+    <AuthedUserContext.Provider value={user}>
+      <Navbar user={user} handleSignout={handleSignout} />
       <Routes>
-      {user ? (
-        <>
-        <Route path="/" element={<UserProfile user={user} />} />
-        <Route path="/places" element={<PlacesList />} /> 
-        </>
-         ) : (
-          <Route path="/" element={<Landing />} /> 
-         )}
+        {user ? (
+          <>
+            <Route path="/" element={<UserProfile user={user} />} />
+            <Route path="/places" element={<PlacesList places={places} />} />
+            <Route path="/places/new" element={<PlaceForm handleAddPlace={handleAddPlace} />} />
+            <Route path="/places/:placeId" element={<PlaceDetails handleDeletePlace={handleDeletePlace} />} />
+            <Route path="/places/:placeId/edit" element={<PlaceForm handleUpdatePlace={handleUpdatePlace} />} />
+          </>
+        ) : (
+          <Route path="/" element={<Landing />} />
+        )}
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
-    </Router>
-      </>
-  )
+    </AuthedUserContext.Provider>
+  );
 }
 
-export default App
+export default App;
