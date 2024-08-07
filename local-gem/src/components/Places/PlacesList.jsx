@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
-function PlacesList({places}) {
- // const [places, setPlaces] = useState([])
-
-  /*useEffect(() => {
-    fetch('/places')
-      .then(response => response.json())
-      .then(data => setPlaces(data))
-      .catch(error => console.error('Error fetching places:', error))
-  }, [])*/
-
+const PlaceList = ({places}) => {
+  console.log(places)
   return (
-    <div>
-      <h2>Places</h2>
-      <ul>
-        {places.map(place => (
-          <li key={place._id}>{place.nameOfPlace}</li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+    <main>
+      {places.map((place) => (
+        <Link key={place._id} to={`/places/${place._id}`}>
+          <article>
+            <header>
+              <h2>{place.placeName}</h2>
+              <p>
+                {place.user.username} posted on{' '}
+                {new Date(place.createdAt).toLocaleDateString()}
+              </p>
+            </header>
+            <p>{place.description}</p>
+          </article>
+        </Link>
+      ))}
+    </main>
+  );
+};
 
-export default PlacesList
+export default PlaceList;

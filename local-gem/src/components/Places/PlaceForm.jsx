@@ -1,65 +1,84 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import * as placeService from '../../services/placeService.js';
 
-function PlaceForm() {
-  const [nameOfPlace, setNameOfPlace] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const navigate = useNavigate();
+const PlaceForm = ({ handleAddPlace, handleUpdatePlace }) => {
+  const [formData, setFormData] = useState({
+    placeName: '',
+    location: '',
+    image: '',
+    description: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Location variables
+  const { placeId } = useParams();
 
-    const newPlace = { nameOfPlace, location, description };
+  useEffect(() => {
+    const fetchPlace = async () => {
+      const singlePlace = await placeService.show(placeId);
+      setFormData(singlePlace);
+    };
+    if (placeId) {
+      fetchPlace();
+    }
+  }, [placeId]);
 
-    fetch('/places', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newPlace),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-        navigate('/places'); // Redirect to places list after successful submission
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+  const handleChange = (evt) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (placeId) {
+      handleUpdatePlace(placeId, formData);
+    } else {
+      handleAddPlace(formData);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name of Place:</label>
+    <main>
+      <h1>{ placeId ? 'Update Place' : 'Create Place'}</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="placeName-input">Name of Place</label>
         <input
-          type="text"
-          value={nameOfPlace}
-          onChange={(e) => setNameOfPlace(e.target.value)}
           required
+          type="text"
+          name="placeName"
+          id="placeName-input"
+          value={formData.placeName}
+          onChange={handleChange}
         />
-      </div>
-      <div>
-        <label>Location:</label>
+        <label htmlFor="location-input">Location</label>
         <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
           required
+          type="text"
+          name="location"
+          id="location-input"
+          value={formData.location}
+          onChange={handleChange}
         />
-      </div>
-      <div>
-        <label>Description:</label>
+        <label htmlFor="image-input">Image URL</label>
+        <input
+          required
+          type="text"
+          name="image"
+          id="image-input"
+          value={formData.image}
+          onChange={handleChange}
+        />
+        <label htmlFor="description-input">Description</label>
         <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
           required
+          name="description"
+          id="description-input"
+          value={formData.description}
+          onChange={handleChange}
         ></textarea>
-      </div>
-      <button type="submit">Add Place</button>
-    </form>
+        <button type="submit">SUBMIT</button>
+      </form>
+    </main>
   );
-}
+};
 
 export default PlaceForm;
