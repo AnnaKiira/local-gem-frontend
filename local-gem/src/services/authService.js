@@ -9,6 +9,10 @@ const getUser = () => {
     return user;
 }
 
+const getToken = () => {
+  return localStorage.getItem('token')
+}
+
 const signup = async (formData) => {
     try {
       const res = await fetch(`${BACKEND_URL}/users/signup`, {
@@ -53,4 +57,4 @@ const signout = () => {
   localStorage.removeItem('token')
 }
 
-export {getUser, signup, signin, signout}
+export {getToken, getUser, signup, signin, signout}
