@@ -1,43 +1,43 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Alert } from 'react-bootstrap';
-import * as authService from '../../services/authService';
-import './SignupForm.scss'; // Import the SCSS file
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Form, Button, Container, Alert } from 'react-bootstrap'
+import * as authService from '../../services/authService'
+import './SignupForm.scss' 
 
 const SignupForm = ({ setUser }) => {
-  const navigate = useNavigate();
-  const [message, setMessage] = useState('');
+  const navigate = useNavigate()
+  const [message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     username: '',
     hashedPassword: '',
     passwordConf: '',
-  });
+  })
 
   const updateMessage = (message) => {
-    setMessage(message);
-  };
+    setMessage(message)
+  }
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      const newUser = await authService.signup(formData);
-      setUser(newUser.user);
-      navigate('/');
+      const newUser = await authService.signup(formData)
+      setUser(newUser.user)
+      navigate('/')
     } catch (error) {
-      updateMessage(error.message);
+      updateMessage(error.message)
     }
-  };
+  }
 
-  const { email, username, hashedPassword, passwordConf } = formData;
+  const { email, username, hashedPassword, passwordConf } = formData
 
   const isFormInvalid = () => {
-    return !(email && username && hashedPassword && hashedPassword === passwordConf);
-  };
+    return !(email && username && hashedPassword && hashedPassword === passwordConf)
+  }
 
   return (
     <Container className="signup-form">
@@ -94,7 +94,7 @@ const SignupForm = ({ setUser }) => {
         </div>
       </Form>
     </Container>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

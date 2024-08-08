@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
-import './Navbar.scss'; // Import the SCSS file
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Nav } from 'react-bootstrap'
+import './Navbar.scss' 
 
 const Navbar = ({ user, handleSignout }) => (
   <Nav className="navbar-custom flex-column">
@@ -20,6 +20,6 @@ const Navbar = ({ user, handleSignout }) => (
       </>
     )}
   </Nav>
-);
+)
 
-export default Navbar;
+export default Navbar

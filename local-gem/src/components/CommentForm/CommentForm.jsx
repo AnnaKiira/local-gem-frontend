@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 const CommentForm = ({ handleAddComment }) => {
   // State
-  const [formData, setFormData] = useState({ text: '' });
+  const [formData, setFormData] = useState({ text: '' })
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
-  };
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    evt.preventDefault()
     // handleAddComment
     handleAddComment(formData)
-    setFormData({ text: '' });
-  };
+    setFormData({ text: '' })
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -28,7 +28,7 @@ const CommentForm = ({ handleAddComment }) => {
       />
       <button type="submit">SUBMIT COMMENT</button>
     </form>
-  );
-};
+  )
+}
 
-export default CommentForm;
+export default CommentForm

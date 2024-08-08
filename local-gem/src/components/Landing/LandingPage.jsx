@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Button } from 'react-bootstrap';
-import './LandingPage.scss'; // Import the SCSS file
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Container, Button } from 'react-bootstrap'
+import './LandingPage.scss' 
 
 const LandingPage = () => {
   return (
@@ -17,7 +17,7 @@ const LandingPage = () => {
         </Link>
       </div>
     </Container>
-  );
+  )
 }
 
-export default LandingPage;
+export default LandingPage

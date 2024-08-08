@@ -1,36 +1,36 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Alert } from 'react-bootstrap';
-import * as authService from '../../services/authService';
-import './SigninForm.scss';
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Form, Button, Container, Alert } from 'react-bootstrap'
+import * as authService from '../../services/authService'
+import './SigninForm.scss'
 
 const SigninForm = ({ setUser }) => {
-  const navigate = useNavigate();
-  const [message, setMessage] = useState('');
+  const navigate = useNavigate()
+  const [message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     username: '',
     hashedPassword: '',
-  });
+  })
 
   const updateMessage = (message) => {
-    setMessage(message);
-  };
+    setMessage(message)
+  }
 
   const handleChange = (event) => {
-    updateMessage('');
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+    updateMessage('')
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      const user = await authService.signin(formData);
-      setUser(user);
-      navigate('/');
+      const user = await authService.signin(formData)
+      setUser(user)
+      navigate('/')
     } catch (error) {
-      updateMessage(error.message);
+      updateMessage(error.message)
     }
-  };
+  }
 
   return (
     <Container className="signin-form">
@@ -67,7 +67,7 @@ const SigninForm = ({ setUser }) => {
         </div>
       </Form>
     </Container>
-  );
-};
+  )
+}
 
-export default SigninForm;
+export default SigninForm
