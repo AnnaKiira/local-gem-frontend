@@ -10,7 +10,6 @@ import PlaceForm from './components/Places/PlaceForm.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import AuthLayout from './components/Layout/AuthLayout.jsx'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -73,10 +72,10 @@ const App = () => {
       {user ? (
         <Container>
           <Row>
-            <Col xs={{ span: 4, offset: 1 }}>
+            <Col xs={{ span: 2 }}>
               <Navbar user={user} handleSignout={handleSignout} />
             </Col>
-            <Col xs={{ span: 6 }}>
+            <Col xs={{ span: 10 }}>
               <Routes>
                 <Route path="/" element={<UserProfile user={user} />} />
                 <Route path="/places" element={<PlacesList places={places} />} />
