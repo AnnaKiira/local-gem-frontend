@@ -69,9 +69,7 @@ const App = () => {
 
   return (
     <AuthedUserContext.Provider value={user}>
-      <Navbar user={user} handleSignout={handleSignout} />
       {user ? (
-
         <Container>
           <Row>
             <Col xs={{ span: 4, offset: 1 }}>
@@ -90,9 +88,11 @@ const App = () => {
         </Container>
       ) : (
         <>
-          <Landing />
           <Container>
             <Row>
+              <Col xs={{ span: 4, offset: 1 }}>
+                <Navbar user={user} handleSignout={handleSignout} />
+              </Col>
               <Col xs={{ span: 6 }}>
                 <Routes>
                   <Route path="/" element={<Landing />} />
