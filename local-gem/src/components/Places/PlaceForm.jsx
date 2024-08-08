@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as placeService from '../../services/placeService.js';
 import ImageUpload from '../ImageUpload/ImageUpload.jsx'
+//import styles from './PlacesList.module.css'
 
 const PlaceForm = ({ handleAddPlace, handleUpdatePlace }) => {
   const [formData, setFormData] = useState({
