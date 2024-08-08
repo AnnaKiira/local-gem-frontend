@@ -16,8 +16,9 @@ const CommentForm = ({ handleAddComment }) => {
   };
 
   return (
+    <div className="comments">
     <form onSubmit={handleSubmit}>
-      <label htmlFor="text-input">Your comment:</label>
+
       <textarea
         required
         type="text"
@@ -26,9 +27,11 @@ const CommentForm = ({ handleAddComment }) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button type="submit">SUBMIT COMMENT</button>
+      <button type="submit">comment</button>
     </form>
+    </div>
   );
 };
+
 
 export default CommentForm;
