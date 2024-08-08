@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-//import styles from './PlacesList.module.css'
+import { Link } from 'react-router-dom'
 
 const PlaceList = ({places}) => {
   console.log(places)
@@ -25,7 +24,7 @@ const PlaceList = ({places}) => {
         </Link>
       ))}
     </main>
-  );
-};
+  )
+}
 
-export default PlaceList;
+export default PlaceList
