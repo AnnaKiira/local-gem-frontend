@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 const PlaceList = ({places}) => {
   console.log(places)
+
+
   return (
     <main>
       {places.map((place) => (
@@ -15,6 +17,9 @@ const PlaceList = ({places}) => {
               </p>
             </header>
             <p>{place.description}</p>
+            {place.image && (
+              <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>
+            )}
           </article>
         </Link>
       ))}

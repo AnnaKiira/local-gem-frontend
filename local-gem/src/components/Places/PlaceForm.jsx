@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as placeService from '../../services/placeService.js';
+import ImageUpload from '../ImageUpload/ImageUpload.jsx'
 
 const PlaceForm = ({ handleAddPlace, handleUpdatePlace }) => {
   const [formData, setFormData] = useState({
@@ -36,6 +37,10 @@ const PlaceForm = ({ handleAddPlace, handleUpdatePlace }) => {
     }
   };
 
+  const handleImageUpload = (value) => {
+    setFormData({...formData, image: value})
+  }
+
   return (
     <main>
       <h1>{ placeId ? 'Update Place' : 'Create Place'}</h1>
@@ -58,15 +63,12 @@ const PlaceForm = ({ handleAddPlace, handleUpdatePlace }) => {
           value={formData.location}
           onChange={handleChange}
         />
-        <label htmlFor="image-input">Image URL</label>
-        <input
-          required
-          type="text"
-          name="image"
-          id="image-input"
-          value={formData.image}
-          onChange={handleChange}
-        />
+        <ImageUpload 
+        name="image"
+        label="Upload Image"
+        image={formData.image} 
+        handleImageUpload={handleImageUpload}/>
+
         <label htmlFor="description-input">Description</label>
         <textarea
           required
