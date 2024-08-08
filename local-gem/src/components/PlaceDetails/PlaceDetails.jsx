@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router-dom'
 import * as placesService from '../../services/placeService.js'
 import CommentForm from '../CommentForm/CommentForm.jsx'
 import { AuthedUserContext } from '../../App'
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 
 const PlaceDetails = ({ handleDeletePlace}) => {
@@ -39,23 +42,32 @@ const PlaceDetails = ({ handleDeletePlace}) => {
    // Update state
  }
 
-
-
-
  if (!place) return <main>Loading...</main>
 
  return (
-   <main>
-     <header>
+   <main className="placedetails">
+    <Container>
+      <Row>
+      <Col xs="12">
        <h1>{place.placeName}</h1>
+       </Col>
+       </Row>
+       <Row>
+       <Col xs="12">
        <p>
          {place.user.username} posted on
          {new Date(place.createdAt).toLocaleDateString()}
        </p>
-     </header>
+       </Col>
+       </Row>
+       <Row>
+       <Col xs="12">
      <p>{place.description}</p>
+     </Col>
+     </Row>
 
-
+<Row>
+<Col xs="12">
      {/* UPDATE/DELETE */}
      { place.user._id === user._id &&
        <section>
@@ -63,29 +75,35 @@ const PlaceDetails = ({ handleDeletePlace}) => {
          <Link to={`/places/${placeId}/edit`}>Update Place</Link>
        </section>
      }
+            </Col>
+     </Row>
     
 
-
+<Row>
+<Col xs="12">
      <section>
        <h2>Comments</h2>
        {!place.comments.length && <p>There are no comments.</p>}
        {place.comments.map((comment) => (
-         <article key={comment._id}>
-           <header>
+        
+         <div key={comment._id}>
              <p>
                {comment.user.username} posted on
                {new Date(comment.createdAt).toLocaleDateString()}
              </p>
-           </header>
            <p>{comment.text}</p>
-         </article>
+         </div>
        ))}
        <CommentForm handleAddComment={handleAddComment} />
      </section>
-   </main>
+
+     </Col>
+</Row>
+</Container>
+</main>
+ 
  )
 }
-
 
 export default PlaceDetails
 

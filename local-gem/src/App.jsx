@@ -10,6 +10,7 @@ import PlacesList from './components/Places/PlacesList.jsx'
 import PlaceForm from './components/Places/PlaceForm.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css'   
 
 // Services
 import * as placeService from './services/placeService';
