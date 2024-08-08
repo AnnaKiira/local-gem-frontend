@@ -1,8 +1,7 @@
-import { useState, useEffect, createContext } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect, createContext } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
-
-import PlaceDetails from './components/PlaceDetails/PlaceDetails';
+import PlaceDetails from './components/PlaceDetails/PlaceDetails'
 import SignupForm from './components/SignupForm/SignupForm.jsx'
 import SigninForm from './components/SigninForm/SigninForm.jsx'
 import Landing from './components/Landing/LandingPage.jsx'
@@ -10,15 +9,18 @@ import PlacesList from './components/Places/PlacesList.jsx'
 import PlaceForm from './components/Places/PlaceForm.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import AuthLayout from './components/Layout/AuthLayout.jsx'
+
 
 // Services
-import * as placeService from './services/placeService';
+import * as placeService from './services/placeService'
 import * as authService from '../src/services/authService.js'
 
-export const AuthedUserContext = createContext(null);
+export const AuthedUserContext = createContext(null)
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [user, setUser] = useState(authService.getUser()) // using the method from authservice
   const [places, setPlaces] = useState([])
 
   // Location variables
@@ -59,7 +61,7 @@ const App = () => {
   const handleUpdatePlace = async (placeId, formData) => {
     const updatedPlace = await placeService.update(placeId, formData)
     console.log(updatedPlace)
-    navigate(`/places/${placeId}`);
+    navigate(`/places/${placeId}`)
   }
 
   return (
@@ -81,7 +83,7 @@ const App = () => {
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />
       </Routes>
     </AuthedUserContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
+import AuthLayout from '../Layout/AuthLayout'
 
 const SignupForm = (props) => {
   const navigate = useNavigate()
@@ -31,7 +32,7 @@ const SignupForm = (props) => {
     }
   };
 
-  const {email, username, hashedPassword, passwordConf} = formData
+  const { email, username, hashedPassword, passwordConf } = formData
 
   const isFormInvalid = () => {
     return !(email && username && hashedPassword && hashedPassword === passwordConf)
@@ -41,8 +42,9 @@ const SignupForm = (props) => {
     <main>
       <h1>Sign Up</h1>
       <p>{message}</p>
+      {/* <AuthLayout></AuthLayout> */}
       <form onSubmit={handleSubmit}>
-      <div>
+        <div>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
