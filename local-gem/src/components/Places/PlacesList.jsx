@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col"
 
 const PlaceList = ({places}) => {
   console.log(places)
+
+
   return (
     <main className="places">
       <Container>
@@ -19,6 +21,10 @@ const PlaceList = ({places}) => {
             <header>
               <h2>{place.placeName}</h2>
             </header>
+            <p>{place.description}</p>
+            {place.image && (
+              <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>
+            )}
           </article>
         </Link>
         </Col>

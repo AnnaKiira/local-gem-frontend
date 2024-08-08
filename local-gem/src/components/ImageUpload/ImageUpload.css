@@ -1,0 +1,10 @@
+.upload-image {
+    height: 150px;
+    width: 150px;
+    border-radius: 5%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    display: inline-block;
+}

@@ -1,38 +1,25 @@
-import {Link} from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 
-const Navbar = ({user, handleSignout}) => {
-    return (
+const Navbar = ({ user, handleSignout }) => (
+  <Nav className="flex-column bg-light p-3" style={{ justifyContent: 'space-evenly', height: '100vh', width: '250px' }}>
+    {user ? (
       <>
-      {user ? (
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">{user.username}</Link>
-          </li>
-          <li>
-            <Link to="/places">Places</Link>
-          </li>
-          <li>
-            <Link to="/places/new">Add Place</Link>
-          </li>
-          <li><Link to="" onClick={handleSignout}>Sign Out</Link>
-          </li>
-        </ul>
-      </nav>
-      ) : (
-        <nav>
-          <ul>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-          </ul>
-        </nav>
-      )}
+        <Nav.Link as={Link} to="/">{user.username}</Nav.Link>
+        <Nav.Link as={Link} to="/places">Places</Nav.Link>
+        <Nav.Link as={Link} to="/places/new">Add Place</Nav.Link>
+        <Nav.Link as={Link} onClick={handleSignout}>Sign Out</Nav.Link>
       </>
-    )
-}
-  
-export default Navbar
+    ) : (
+      <>
+        <Nav.Link as={Link} to="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
+        <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>
+      </>
+    )}
+  </Nav>
+);
+
+export default Navbar;
+

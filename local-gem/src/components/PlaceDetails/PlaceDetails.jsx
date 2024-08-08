@@ -58,16 +58,12 @@ const PlaceDetails = ({ handleDeletePlace}) => {
          {place.user.username} posted on
          {new Date(place.createdAt).toLocaleDateString()}
        </p>
-       </Col>
-       </Row>
-       <Row>
-       <Col xs="12">
-     <p>{place.description}</p>
-     </Col>
-     </Row>
+     </header>
 
-<Row>
-<Col xs="12">
+     {place.image && (
+      <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>)}
+     <p>{place.description}</p>
+
      {/* UPDATE/DELETE */}
      { place.user._id === user._id &&
        <section>
@@ -75,12 +71,7 @@ const PlaceDetails = ({ handleDeletePlace}) => {
          <Link to={`/places/${placeId}/edit`}>Update Place</Link>
        </section>
      }
-            </Col>
-     </Row>
-    
 
-<Row>
-<Col xs="12">
      <section>
        <h2>Comments</h2>
        {!place.comments.length && <p>There are no comments.</p>}
