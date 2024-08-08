@@ -1,25 +1,26 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Form, Button, Container, Alert } from 'react-bootstrap'
 import * as authService from '../../services/authService'
-//import AuthLayout from '../Layout/AuthLayout'
+import './SignupForm.scss' 
 
-const SignupForm = ({setUser}) => {
+const SignupForm = ({ setUser }) => {
   const navigate = useNavigate()
-  const [message, setMessage] = useState([''])
+  const [message, setMessage] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     username: '',
     hashedPassword: '',
     passwordConf: '',
-  });
+  })
 
   const updateMessage = (message) => {
-    setMessage(message);
-  };
+    setMessage(message)
+  }
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value })
-  };
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -30,7 +31,7 @@ const SignupForm = ({setUser}) => {
     } catch (error) {
       updateMessage(error.message)
     }
-  };
+  }
 
   const { email, username, hashedPassword, passwordConf } = formData
 
@@ -39,60 +40,61 @@ const SignupForm = ({setUser}) => {
   }
 
   return (
-    <main>
+    <Container className="signup-form">
       <h1>Sign Up</h1>
-      <p>{message}</p>
-      {/* <AuthLayout></AuthLayout> */}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
+      {message && <Alert variant="danger">{message}</Alert>}
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="email"
-            id="email"
-            value={email}
             name="email"
+            value={email}
             onChange={handleChange}
+            required
           />
-        </div>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
             type="text"
-            id="name"
-            value={username}
             name="username"
+            value={username}
             onChange={handleChange}
+            required
           />
-        </div>
-        <div>
-          <label htmlFor="hashedPassword">Password:</label>
-          <input
-            type="hashedPassword"
-            id="hashedPassword"
-            value={hashedPassword}
-            name="hashedPassword"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="hashedPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
-            id="confirm"
-            value={passwordConf}
-            name="passwordConf"
+            name="hashedPassword"
+            value={hashedPassword}
             onChange={handleChange}
+            required
           />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
+        </Form.Group>
+        <Form.Group controlId="passwordConf">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="passwordConf"
+            value={passwordConf}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        <div className="btn-container">
+          <Button variant="primary" type="submit" disabled={isFormInvalid()}>
+            Sign Up
+          </Button>
           <Link to="/">
-            <button>Go Back</button>
+            <Button variant="secondary">Go Back</Button>
           </Link>
         </div>
-      </form>
-    </main>
+      </Form>
+    </Container>
   )
 }
 
-export default SignupForm;
+export default SignupForm

@@ -10,7 +10,6 @@ import PlaceForm from './components/Places/PlaceForm.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
-//import AuthLayout from './components/Layout/AuthLayout.jsx'
 
 
 // Services

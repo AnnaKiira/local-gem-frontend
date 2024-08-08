@@ -1,25 +1,25 @@
-//import React from 'react';
-import { Link } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Nav } from 'react-bootstrap'
+import './Navbar.scss' 
 
 const Navbar = ({ user, handleSignout }) => (
-  <Nav className="flex-column bg-light p-3" style={{ justifyContent: 'space-evenly', height: '100vh', width: '250px' }}>
+  <Nav className="navbar-custom flex-column">
     {user ? (
       <>
-        <Nav.Link as={Link} to="/">{user.username}</Nav.Link>
-        <Nav.Link as={Link} to="/places">Places</Nav.Link>
-        <Nav.Link as={Link} to="/places/new">Add Place</Nav.Link>
-        <Nav.Link as={Link} onClick={handleSignout}>Sign Out</Nav.Link>
+        <Nav.Link as={Link} to="/" className="nav-link">{user.username}</Nav.Link>
+        <Nav.Link as={Link} to="/places" className="nav-link">Places</Nav.Link>
+        <Nav.Link as={Link} to="/places/new" className="nav-link">Add Place</Nav.Link>
+        <Nav.Link as={Link} onClick={handleSignout} className="nav-link">Sign Out</Nav.Link>
       </>
     ) : (
       <>
-        <Nav.Link as={Link} to="/">Home</Nav.Link>
-        <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
-        <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link>
+        <Nav.Link as={Link} to="/" className="nav-link">Home</Nav.Link>
+        <Nav.Link as={Link} to="/signin" className="nav-link">Sign In</Nav.Link>
+        <Nav.Link as={Link} to="/signup" className="nav-link">Sign Up</Nav.Link>
       </>
     )}
   </Nav>
-);
+)
 
-export default Navbar;
-
+export default Navbar
