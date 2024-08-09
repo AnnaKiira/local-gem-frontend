@@ -6,7 +6,7 @@ import { AuthedUserContext } from '../../App'
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import "./PlaceDetails.css"
+import "./PlaceDetails.scss"
 
 
 const PlaceDetails = ({ handleDeletePlace}) => {
@@ -65,24 +65,22 @@ const PlaceDetails = ({ handleDeletePlace}) => {
      <p>{place.description}</p>
 
 
-
-     <section>
      <CommentForm handleAddComment={handleAddComment} />
        {!place.comments.length && <p>There are no comments.</p>}
 
  
        {place.comments.map((comment) => (
+                 <article key={comment._id}>
              <div className="card">  
-         <div key={comment._id}>
              <h6 className="card-title">
                {comment.user.username} said: 
              </h6>
            <p className="card-text">{comment.text}</p>
-         </div>
-         </div>
-       ))}
+           </div>
+           </article>
 
-     </section>
+
+       ))}
 
      </Col>
 </Row>

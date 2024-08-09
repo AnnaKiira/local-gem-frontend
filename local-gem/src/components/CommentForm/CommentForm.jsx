@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import "./CommentForm.css"
+import { Form, Button, Container } from 'react-bootstrap'
+import "./CommentForm.scss"
 
 const CommentForm = ({ handleAddComment }) => {
   // State
@@ -17,8 +19,9 @@ const CommentForm = ({ handleAddComment }) => {
   };
 
   return (
-    <div className="comments">
-    <form onSubmit={handleSubmit}>
+    <Container className="comment-form">
+    <Form onSubmit={handleSubmit}>
+    <Form.Group controlId="comment-input" className="comment-group">
 
       <textarea
         required
@@ -28,9 +31,12 @@ const CommentForm = ({ handleAddComment }) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button type="submit">comment</button>
-    </form>
-    </div>
+      </Form.Group>
+   <div className="btn-container">
+          <Button variant="primary" type="submit">SUBMIT</Button>
+        </div>
+      </Form>
+      </Container>
   );
 };
 
