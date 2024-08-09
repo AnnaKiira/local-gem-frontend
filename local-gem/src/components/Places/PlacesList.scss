@@ -13,6 +13,11 @@
     max-width: calc(33.333% - 40px);
     min-width: 280px;
     box-sizing: border-box;
+
+    &:hover {
+        text-decoration: none;
+        color: black;
+      }
 }
 
 .place-card {
@@ -23,7 +28,7 @@
     height: 500px;
   
     &:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     }
   
     header {

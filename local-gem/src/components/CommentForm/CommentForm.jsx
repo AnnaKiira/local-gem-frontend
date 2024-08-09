@@ -3,7 +3,6 @@ import { Form, Button, Container } from 'react-bootstrap'
 import "./CommentForm.scss"
 
 const CommentForm = ({ handleAddComment }) => {
-  // State
   const [formData, setFormData] = useState({ text: '' });
 
   const handleChange = (evt) => {
@@ -12,7 +11,6 @@ const CommentForm = ({ handleAddComment }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // handleAddComment
     handleAddComment(formData)
     setFormData({ text: '' });
   };

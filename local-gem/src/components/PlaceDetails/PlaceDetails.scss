@@ -1,12 +1,9 @@
-
 .placedetails {
     justify-content: center;
     font-size: 40px;
     margin-top: 50px;
 
 }
-
-
 
 .showtitle {
     justify-content: center;
@@ -31,4 +28,46 @@
     color: black;
   }
 
+  .update-button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.8em 1.2em;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    text-decoration: none;
+  }
+  .update-button:hover {
+    background-color: #fff;
+    color: black;
+  } 
+    
+  .del-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.del-button:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.upload-image {
+  width: 100%;
+  height: 1000px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  margin-top: 24px;
+}
 

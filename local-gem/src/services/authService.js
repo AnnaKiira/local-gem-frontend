@@ -1,4 +1,3 @@
-//Auth Service will be added here
 
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 

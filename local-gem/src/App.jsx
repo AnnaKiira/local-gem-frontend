@@ -15,17 +15,17 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-// Services
+
 import * as placeService from './services/placeService'
 import * as authService from '../src/services/authService.js'
 
 export const AuthedUserContext = createContext(null)
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser()) // using the method from authservice
+  const [user, setUser] = useState(authService.getUser()) 
   const [places, setPlaces] = useState([])
 
-  // Location variables
+  
   const navigate = useNavigate()
 
   const handleSignout = () => {
@@ -34,8 +34,8 @@ const App = () => {
   }
 
   const fetchAllPlaces = async () => {
-    const allPlaces = await placeService.index() // Make the API call, receive the data back from the backend server
-    setPlaces(allPlaces) // Set the data to state
+    const allPlaces = await placeService.index() 
+    setPlaces(allPlaces) 
   }
 
   useEffect(() => {
@@ -51,12 +51,11 @@ const App = () => {
   }
 
   const handleDeletePlace = async (placeId) => {
-    // Send the DELETE request via our service function
+    
     const deletePlace = await placeService.deletePlace(placeId)
     console.log(deletePlace)
-    // Update state to reflect the up to date places list
+    
     await fetchAllPlaces()
-    // Navigate to place index
     navigate('/places')
   }
 

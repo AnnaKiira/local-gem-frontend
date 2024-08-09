@@ -10,15 +10,15 @@ import "./PlaceDetails.scss"
 
 
 const PlaceDetails = ({ handleDeletePlace}) => {
- // Context
+ 
  const user = useContext(AuthedUserContext)
 
 
- // State
+
  const [place, setPlace] = useState(null)
 
 
- // Location variables
+ 
  const { placeId } = useParams()
 
 
@@ -39,8 +39,6 @@ const PlaceDetails = ({ handleDeletePlace}) => {
      ...place,
      comments: [...place.comments, newComment]
    })
-  
-   // Update state
  }
 
  if (!place) return <main>Loading...</main>
@@ -85,11 +83,10 @@ const PlaceDetails = ({ handleDeletePlace}) => {
      </Col>
 </Row>
 <Row>
-       {/* UPDATE/DELETE */}
        { place.user._id === user._id &&
        <section>
-         <button onClick={() => handleDeletePlace(placeId)}>Delete Place</button>
-         <Link to={`/places/${placeId}/edit`}>Update Place</Link>
+         <button className="del-button" onClick={() => handleDeletePlace(placeId)}>Delete Place</button>
+         <Link className="update-button" to={`/places/${placeId}/edit`}>Update Place</Link>
        </section>
      }
 </Row>
