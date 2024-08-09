@@ -10,12 +10,11 @@ export const index = async () => {
                 Authorization: `Bearer ${getToken()}`
             }
         })
-        return res.json();
+        return res.json()
     } catch (error) {
         console.log(error)
     }
 }
-
 
 export const show = async (placeId) => {
     try {
@@ -24,7 +23,7 @@ export const show = async (placeId) => {
                 Authorization: `Bearer ${getToken()}`
             }
         })
-        return res.json();
+        return res.json()
     } catch (error) {
         console.log(error)
     }
@@ -39,12 +38,12 @@ export const createComment = async (placeId, formData) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
-    });
-    return res.json();
+    })
+    return res.json()
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export const deletePlace = async (placeId) => {
   try {
@@ -59,7 +58,6 @@ export const deletePlace = async (placeId) => {
     console.log(error)
   }
 }
-
 
 export const create = async (formData) => {
     try {
@@ -86,6 +84,19 @@ export const update = async (placeId, formData) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
+        })
+        return res.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getUserPlaces = async (userId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/user/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
         })
         return res.json()
     } catch (error) {

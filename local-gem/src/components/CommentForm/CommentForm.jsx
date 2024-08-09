@@ -6,14 +6,14 @@ const CommentForm = ({ handleAddComment }) => {
   const [formData, setFormData] = useState({ text: '' });
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
-  };
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleAddComment(formData)
-    setFormData({ text: '' });
-  };
+    setFormData({ text: '' })
+  }
 
   return (
     <Container className="comment-form">
@@ -34,8 +34,8 @@ const CommentForm = ({ handleAddComment }) => {
         </div>
       </Form>
       </Container>
-  );
-};
+  )
+}
 
 
-export default CommentForm;
+export default CommentForm
