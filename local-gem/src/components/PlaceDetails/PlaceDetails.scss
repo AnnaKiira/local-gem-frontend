@@ -1,74 +1,105 @@
-.placedetails {
-    justify-content: center;
-    font-size: 40px;
+.place-details-container {
     margin-top: 50px;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a67f80;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-
-}
-
-.showtitle {
-    justify-content: center;
-}
-
-  header {
-    margin-bottom: 15px;
-    h2 {
-      font-size: 24px;
+  
+    .place-title {
+      font-size: 32px;
+      font-weight: bold;
       margin-bottom: 10px;
+      text-align: center;
     }
-
-    p {
+  
+    .post-details {
       font-size: 14px;
-      color: black;
+      color: #6c757d;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .upload-image {
+      width: 80%; 
+      height: 200px; 
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin: 0 auto 20px auto; 
+      display: block;
+    }
+  
+    .place-description {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #343a40;
+      text-align: center; 
+    }
+  
+    .action-buttons {
+      margin-bottom: 20px;
+      text-align: center;
+
+      .del-button {
+        background-color: #c8acad;
+        border-color: black;
+        color: black;
+      }
+
+      .update-button {
+        background-color: #aaacc3;
+        color: black;
+        border-color: black;
+      }
+  
+      .btn {
+        min-width: 120px;
+        padding: 8px 16px;
+        margin: 0 10px;
+      }
+    }
+  
+    .comments-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .comment-card {
+      background-color: #a9b5aa;
+      border: 1px solid black;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin-bottom: 15px;
+      max-width: 100%;
+    }
+  
+    .add-comment-section {
+      margin-top: 20px;
+      text-align: center; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      label {
+        margin-bottom: 10px;
+      }
+    }
+  
+    .add-comment-button {
+      margin-top: 10px;
+    }
+
+    #text-input {
+        background-color: #a9b5aa;
+        color: black;
+        width: 80%;
     }
   }
-
-  p {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: black;
-  }
-
-  .update-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.8em 1.2em;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    color: white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    text-decoration: none;
-  }
-  .update-button:hover {
-    background-color: #fff;
-    color: black;
-  } 
-    
-  .del-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-.del-button:hover {
-  background-color: #fff;
-  color: black;
-}
-
-.upload-image {
-  width: 100%;
-  height: 1000px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 8px;
-  margin-top: 24px;
-}
-
+  
