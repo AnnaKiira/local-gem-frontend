@@ -47,9 +47,9 @@ const PlaceDetails = ({ handleDeletePlace}) => {
 
  return (
    <main className="placedetails">
-    <Container>
+    <Container className="containerplace">
       <Row>
-      <Col xs="12" clasName="showtitle">
+      <Col xs="12" className="showtitle">
        <h1>{place.placeName}</h1>
        </Col>
        </Row>
@@ -63,8 +63,10 @@ const PlaceDetails = ({ handleDeletePlace}) => {
      {place.image && (
       <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>)}
      <p className= "description-card">{place.description}</p>
-
-
+</Col>
+</Row>
+<Row className="commentsrow">
+<Col className= "commentsall">
      <CommentForm handleAddComment={handleAddComment} />
        {!place.comments.length && <p>There are no comments.</p>}
 
