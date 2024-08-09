@@ -62,7 +62,7 @@ const PlaceDetails = ({ handleDeletePlace}) => {
 
      {place.image && (
       <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>)}
-     <p>{place.description}</p>
+     <p className= "description-card">{place.description}</p>
 
 
      <CommentForm handleAddComment={handleAddComment} />
