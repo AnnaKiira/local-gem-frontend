@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import './PlacesList.scss' 
+import './PlacesList.scss'
 
-const PlaceList = ({places}) => {
+const PlaceList = ({ places }) => {
   console.log(places)
 
 
@@ -19,7 +19,7 @@ const PlaceList = ({places}) => {
             </header>
             <p>{place.description}</p>
             {place.image && (
-              <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>
+              <div className="upload-image" style={{ backgroundImage: `url(${place.image})` }}> </div>
             )}
           </article>
         </Link>
