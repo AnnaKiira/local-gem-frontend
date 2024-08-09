@@ -1,13 +1,38 @@
-.h1 {
-    font-size: 100px;
-}
 
 .placedetails {
     justify-content: center;
+    font-size: 40px;
+    margin-top: 50px;
 
 }
+
+
 
 .showtitle {
     justify-content: center;
 }
+
+:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  header {
+    margin-bottom: 15px;
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: black;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: black;
+  }
+
 
