@@ -13,6 +13,7 @@ Technologies used:
 1. JavaScript - JSX
 2. React
 3. Bootstrap
+4. SCSS
 
 Next steps: Planned future enhancements:
 1. Adding Favorites functionality.
