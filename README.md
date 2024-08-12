@@ -5,9 +5,9 @@ Local Gem,
 A web application that helps users discover and explore local businesses, restaurants, and attractions. The app can provide a platform for users to find, review, and share experiences about different places in their area. 
 
 Getting started: 
-Link to deployed project: https://local-gem.netlify.app/
-Planning materials: https://trello.com/b/Bwi77SiQ/discover-places
-Back-end repo: https://github.com/AnnaKiira/local-gem-backend
+- Link to deployed project: https://local-gem.netlify.app/
+- Planning materials: https://trello.com/b/Bwi77SiQ/discover-places
+- Back-end repo: https://github.com/AnnaKiira/local-gem-backend
 
 Technologies used:
 1. JavaScript - JSX
