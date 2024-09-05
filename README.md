@@ -21,6 +21,8 @@ Technologies used:
 6. Bootstrap
 7. SCSS & CSS
 
+My responsibilities included: Authentication implementation on the frontend side (authentication service, signup & signin forms and nonprotected route paths), creating the landing page, and building the image upload functionality. We collaborated on backend development and styling together.
+
 Key Learnings:
 - This was our first (and last) group project in the bootcamp. It was cool to work with others on code, but it wasn't always easy since we were all remote. We couldn't just look over each other's shoulders to see what we were doing. We talked a lot throughout the day, but we really had to stay organized to keep things running smoothly for the whole week.
 - We learned a lot about using different branches for the parts we were each working on. It was tricky at first, but we got better at committing our own stuff and then merging it all together. It was good practice for working on bigger projects in the future.
