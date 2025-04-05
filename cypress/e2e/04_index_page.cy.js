@@ -20,7 +20,7 @@ describe('The index page should load and display all posts', () => {
 
         cy.get('header').find('p').should('be.visible') //asserting the p tag in the header section is visible
 
-        cy.get('article').find('p').should('be.visible') //not fully done with this one
+        cy.get('article').find('p').should('be.visible') //asserting the other paragraphs on the cards are visible
 
         cy.get('.place-card').find('.upload-image').should('be.visible') //asserting the image is visible
     })
