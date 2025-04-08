@@ -27,11 +27,12 @@ describe('The form page to create new post should load and display', () => {
         cy.get('input[name="placeName"]').type('Sanctuary of Christ the King')
         cy.get('input[name="location"]').type('Lisbon, Portugal')
         cy.get('input[name="image"]').selectFile('cypress/fixtures/jesus-statue.jpg')
-        cy.get('textarea[name="description"]').type('The Sanctuary of Christ the King is a Catholic monument and shrine dedicated to the Sacred Heart of Jesus Christ overlooking the city of Lisbon. Visited on a sunny Saturday, it was beautiful.')
+        cy.get('textarea[name="description"]').type('Jesus Christ overlooking the city of Lisbon.')
 
         cy.wait(3000)
         cy.get('button[type="submit"]').click() //clicking the submit button
         cy.url().should('include', `${BASE_URL}/places`) //asserting we're back on the index page to see the added post
+        cy.scrollTo('top') //scrolling to top since it redirects to the middle of the page and I want to see the newly added post 
     })
 
 })
